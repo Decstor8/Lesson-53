@@ -1,16 +1,20 @@
 import React from "react";
 
 interface Props {
-    id: string;
     message: string;
+    deleted: (id: string) => void;
+    id: string;
 }
 
-const TaskList: React.FC<Props> = ({id, message}) => {
+const TaskList: React.FC<Props> = ({message, deleted, id}) => {
+    const btnDelete = () => {
+        deleted(id);
+    };
 
     return (
         <div>
             <p className='task-message'>{message}</p>
-            <button>Удалить</button>
+            <button onClick={btnDelete}>Удалить</button>
         </div>
     );
 };
