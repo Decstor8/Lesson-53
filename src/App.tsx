@@ -1,35 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import AddTaskForm from "./List/AddTaskForm.tsx";
+import TaskList from "./List/TaskList.tsx";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface Props {
+    id: string;
+    message: string;
 }
 
-export default App
+function App() {
+    const [tasks, setTasks] = useState<Props[]>([
+        { id: '11231', message: 'Подтянуть знания' },
+        { id: '21322', message: 'Отучится' },
+        { id: '21522', message: 'Переехать' },
+    ]);
+
+
+    const newsTask = (message: string) => {
+        const random = Math.random().toString();
+        const newTask = {
+            id: random,
+            message: message,
+        };
+        const copyTask = [...tasks];
+        copyTask.push(newTask);
+        setTasks(copyTask);
+    };
+
+    const deleteTask = (id: string) => {
+        const update: Props[] = [];
+        for (const task of tasks) {
+            if (task.id !== id) {
+                update.push(task);
+            }
+        }
+        setTasks(update);
+    };
+
+  return (
+      <div>
+          <h1>Заметки</h1>
+          <AddTaskForm newTask={newsTask} />
+
+          <div>
+              {tasks.map(task => (
+                  <TaskList
+                      key={task.id}
+                      id={task.id}
+                      message={task.message}
+                      deleted={deleteTask}
+                  />
+              ))}
+          </div>
+      </div>
+  );
+}
+
+export default App;
