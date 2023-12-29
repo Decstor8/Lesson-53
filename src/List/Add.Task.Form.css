@@ -1,0 +1,21 @@
+.input-text {
+    min-width: 370px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.44);
+}
+
+.input-text:active {
+    background-color: black;
+}
+
+.btn-input {
+    margin-left: 5px;
+    border: 1px solid black;
+}
+
+.btn-input:hover {
+    color: white;
+    background-color: black;
+}

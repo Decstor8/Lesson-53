@@ -1,0 +1,15 @@
+.task {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 7px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    box-shadow: -3px 2px 3px 0px rgba(0, 0, 0, 0.28);
+}
+
+.task:hover {
+    background-color: black;
+    color: white;
+}

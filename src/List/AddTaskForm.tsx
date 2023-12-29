@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import './Add.Task.Form.css';
 
 interface Props {
     newTask: (message: string) => void;
@@ -20,8 +21,8 @@ const AddTaskForm: React.FC<Props> = ({newTask}) => {
 
     return (
         <div>
-            <input value={newsTask} onChange={changeText} placeholder='Введите ваше напоминание'/>
-            <button onClick={newListTask}>Добавить заметку</button>
+            <input className='input-text' value={newsTask} onChange={changeText} placeholder='Введите ваше напоминание'/>
+            <button className='btn-input' onClick={newListTask}>Добавить заметку</button>
         </div>
     );
 };

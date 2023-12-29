@@ -39,10 +39,10 @@ function App() {
 
   return (
       <div>
-          <h1>Заметки</h1>
+          <h1 className='main-title'>Заметки</h1>
           <AddTaskForm newTask={newsTask} />
 
-          <div>
+          <div className='main-block'>
               {tasks.map(task => (
                   <TaskList
                       key={task.id}

@@ -1,4 +1,5 @@
 import React from "react";
+import './task.css';
 
 interface Props {
     message: string;
@@ -12,7 +13,7 @@ const TaskList: React.FC<Props> = ({message, deleted, id}) => {
     };
 
     return (
-        <div>
+        <div className='task'>
             <p className='task-message'>{message}</p>
             <button onClick={btnDelete}>Удалить</button>
         </div>
